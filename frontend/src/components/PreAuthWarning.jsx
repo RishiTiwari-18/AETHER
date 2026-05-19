@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAssistant } from '../contexts/AssistantContext';
 import gsap from 'gsap';
+import { useNavigate } from 'react-router-dom';
 
 const warnings = [
   [
@@ -28,6 +29,7 @@ export const PreAuthWarning = () => {
   const { hasPassedWarning, setHasPassedWarning, triggerCursorRemoval } = useAssistant();
   const [warningStage, setWarningStage] = useState(0);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!hasPassedWarning) {
@@ -74,7 +76,7 @@ export const PreAuthWarning = () => {
   };
 
   const handleLeave = () => {
-    window.location.href = "https://google.com";
+    navigate('/game');
   };
 
   return (
@@ -83,7 +85,7 @@ export const PreAuthWarning = () => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-aether-void/90 backdrop-blur-xl"
     >
       <div className="max-w-2xl text-center px-6">
-        <div className="min-h-[200px] flex flex-col justify-center gap-4 mb-12">
+        <div className="min-h-50 flex flex-col justify-center gap-4 mb-12">
           {warnings[warningStage].map((line, i) => (
             <p key={i} className="warning-text font-playfair text-2xl md:text-4xl text-aether-primary opacity-0" style={{ animation: `fadeIn 1s forwards ${i * 0.5}s` }}>
               {line}
