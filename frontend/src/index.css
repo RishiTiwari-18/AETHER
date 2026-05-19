@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-geist: "Geist", monospace;
+  
+  --color-aether-void: #050505;
+  --color-aether-surface: rgba(255, 255, 255, 0.03);
+  --color-aether-border: rgba(255, 255, 255, 0.1);
+  --color-aether-primary: #FFFFFF;
+  --color-aether-secondary: #c6c6c7;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-aether-void text-aether-secondary font-inter antialiased;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after,
+  input,
+  button,
+  textarea,
+  select,
+  a,
+  [role='button'] {
+    cursor: none !important;
+  }
+}
